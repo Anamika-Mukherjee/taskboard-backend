@@ -11,11 +11,11 @@ const secret =  process.env.TOKEN_SECRET!;
 
 //Cookie options
 const cookieOptions = {
-  secure: true,
+  secure: process.env.NODE_ENV==="production",
   httpOnly: true,
   maxAge: 1000 * 60 * 60 * 24 * 7,
   path: "/",
-  // sameSite: "none" as "strict" | "lax" | "none" | undefined,
+  sameSite: "none" as "strict" | "lax" | "none" | undefined,
 }
 
 //Function to convert raw password into hash
