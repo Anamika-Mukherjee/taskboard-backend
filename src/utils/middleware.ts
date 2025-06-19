@@ -13,9 +13,11 @@ const secret = process.env.TOKEN_SECRET!;
 
 //Cookie options
 const cookieOptions = {
-  secure: process.env.NODE_ENV === "production",
+  secure: true,
   httpOnly: true,
   maxAge: 1000 * 60 * 60 * 24 * 7,
+  path: "/",
+  sameSite: "lax" as "strict" | "lax" | "none" | undefined,
 }
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
