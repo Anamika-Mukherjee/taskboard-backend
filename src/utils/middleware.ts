@@ -17,7 +17,7 @@ const cookieOptions = {
   httpOnly: true,
   maxAge: 1000 * 60 * 60 * 24 * 7,
   path: "/",
-  sameSite: "none" as "strict" | "lax" | "none" | undefined,
+//   sameSite: "none" as "strict" | "lax" | "none" | undefined,
 }
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
