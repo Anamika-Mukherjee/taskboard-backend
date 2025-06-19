@@ -15,7 +15,7 @@ const cookieOptions = {
   httpOnly: true,
   maxAge: 1000 * 60 * 60 * 24 * 7,
   path: "/",
-  sameSite: "lax" as "strict" | "lax" | "none" | undefined,
+  sameSite: "none" as "strict" | "lax" | "none" | undefined,
 }
 
 //Function to convert raw password into hash
