@@ -1,4 +1,6 @@
+import { NextFunction } from "express";
 import {Document, Schema, model} from "mongoose";
+import Ticket from "./Ticket";
 
 //Type definition for project document 
 export interface IProject extends Document{
@@ -68,5 +70,13 @@ const projectSchema = new Schema({
 },
  {timestamps: true},
 );
+
+projectSchema.pre("findOneAndDelete", async function (next) {
+    const project = await this.model.findOne(this.getFilter());
+    if (project) {
+        await Ticket.deleteMany({ projectId: project._id });
+    }
+    next();
+});
 
 export default model("Project", projectSchema);
